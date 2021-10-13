@@ -1,15 +1,12 @@
 var app = require('express')();
 var http = require('http').createServer(app);
-const PORT = 8080;
 const io = require('socket.io')(http, {
     cors: {
         origin: '*',
     }
 });
 
-http.listen(PORT, () => {
-    console.log(`listening on *:${PORT}`);
-});
+http.listen(process.env.PORT || 8080);
 
 const users = {}
   
