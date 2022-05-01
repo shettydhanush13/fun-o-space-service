@@ -30,10 +30,10 @@ io.on("connection", (socket) => {
 
   const updateScore = (score, role, value) => {
     switch (role) {
-      case 'RAJA' : return score+1000
-      case 'RANI' : return score+700
+      case 'KING' : return score+1000
+      case 'QUEEN' : return score+700
       case 'POLICE' : return value ? score+500 : score
-      case 'KALLA' : return !value ? score+500 : score
+      case 'THIEF' : return !value ? score+500 : score
     }
   }
 
@@ -66,7 +66,7 @@ io.on("connection", (socket) => {
     // Listen to NEW_MESSAGE for receiving new messages
   socket.on("start-game", (room, users) => {
     const mapRoles = {}
-    const shuffledRoles = shuffleArray(["RAJA", "RANI", "KALLA", "POLICE"])
+    const shuffledRoles = shuffleArray(["KING", "QUEEN", "THIEF", "POLICE"])
     for(i in users) {
       mapRoles[users[i]] = shuffledRoles[i]
     }
